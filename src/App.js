@@ -7,14 +7,14 @@ function App() {
     const [newTaskTitle, setNewTaskTitle] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/todos')
+        axios.get('https://todo-app-xi-lime-54.vercel.app/todos')
             .then(response => setTasks(response.data))
             .catch(error => console.error('Error fetching tasks:', error));
     }, []);
 
     const addTask = () => {
         if (newTaskTitle.trim() === '') return;
-        axios.post('http://localhost:5000/api/todos', { title: newTaskTitle })
+        axios.post('https://todo-app-xi-lime-54.vercel.app/todos', { title: newTaskTitle })
             .then(response => {
                 setTasks([...tasks, response.data]);
                 setNewTaskTitle('');
@@ -23,7 +23,7 @@ function App() {
     };
 
     const removeTask = (id) => {
-        axios.delete(`http://localhost:5000/api/todos/${id}`)
+        axios.delete(`https://todo-app-xi-lime-54.vercel.app/todos/${id}`)
             .then(() => {
                 setTasks(tasks.filter(task => task._id !== id));
             })
