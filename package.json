@@ -18,9 +18,9 @@
   "scripts": {
     "start": "react-scripts start",
     "start:frontend": "react-scripts start",
-    "start:backend": "node backend/server.js", 
+    "start:backend": "node backend/server.js",
     "build": "react-scripts build",
-    "deploy": "npm run build && npm run start:backend", 
+    "deploy": "npm run build && npm run start:backend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

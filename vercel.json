@@ -3,7 +3,7 @@
     "builds": [
       {
         "src": "src/**/*",
-        "use": "@vercel/react",
+        "use": "@vercel/static",
         "config": {
           "distDir": "build"
         }
@@ -20,7 +20,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/build/$1"
+        "dest": "/src/$1"
       }
     ]
   }
