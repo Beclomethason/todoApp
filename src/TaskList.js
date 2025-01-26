@@ -5,7 +5,7 @@ const TaskList = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/todos') // API endpoint for fetching todos
+        axios.get('http://localhost:3000/api/todos') // API endpoint for fetching todos
             .then(response => {
                 setTasks(response.data); // Populate state with fetched data
             })
@@ -15,7 +15,7 @@ const TaskList = () => {
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/api/todos/${id}`) // API endpoint to delete a todo
+        axios.delete(`http://localhost:3000/api/todos/${id}`) // API endpoint to delete a todo
             .then(() => {
                 setTasks(tasks.filter(task => task._id !== id)); // Update state in real-time
             })
@@ -28,13 +28,22 @@ const TaskList = () => {
         <div>
             <h2 className="mb-3">Tasks</h2>
             <ul className="list-group">
-                {tasks.map((task, index) => (
-                    <li className="list-group-item d-flex justify-content-between align-items-center" key={task._id}>
-                        {index + 1}. {task.title}
-                        <button onClick={() => handleDelete(task._id)} className="btn btn-danger btn-sm">Delete</button>
-                    </li>
-                ))}
-            </ul>
+    {tasks.map((task, index) => (
+        <li className={`list-group-item ${task.done ? 'done' : ''}`} key={task._id}>
+            <div className="task-content">
+                <span className="task-index">{index + 1}</span>
+                <span className="task-title">{task.title}</span>
+            </div>
+            {!task.done && (
+                <button onClick={() => markAsDone(task._id)} className="done-button">
+                    Mark as Done
+                </button>
+            )}
+            <button onClick={() => removeTask(task._id)} className="remove-button">Remove</button>
+        </li>
+    ))}
+</ul>
+
         </div>
     );
 };
