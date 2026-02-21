@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 // Mongoose connection
-mongoose.connect('mongodb+srv://Beclomethason:Raja%40123@cluster0.7r0zg.mongodb.net/todoapp', {
+mongoose.connect('mongodb+srv://joy:0JSzutYQRMPwdIkn@cluster0.bha0ui8.mongodb.net/todoapp', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
